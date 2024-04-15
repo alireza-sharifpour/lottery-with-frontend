@@ -1,11 +1,12 @@
-'use client'
+"use client";
 
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import LotteryFE from "./components/LotteryFE";
 
 function App() {
-  const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
-  const { disconnect } = useDisconnect()
+  const account = useAccount();
+  const { connectors, connect, status, error } = useConnect();
+  const { disconnect } = useDisconnect();
 
   return (
     <>
@@ -20,7 +21,7 @@ function App() {
           chainId: {account.chainId}
         </div>
 
-        {account.status === 'connected' && (
+        {account.status === "connected" && (
           <button type="button" onClick={() => disconnect()}>
             Disconnect
           </button>
@@ -40,9 +41,10 @@ function App() {
         ))}
         <div>{status}</div>
         <div>{error?.message}</div>
+        <LotteryFE />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
